@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Images/Frog.png</file>
+        <file>Images/finish_point.png</file>
+        <file>Images/leaf.png</file>
+        <file>Images/grass_long.png</file>
+        <file>Images/road_long.png</file>
+        <file>Images/water_long.png</file>
+        <file>Images/Log_l.png</file>
+        <file>Images/Log_m.png</file>
+        <file>Images/waterfall_long.png</file>
+        <file>Images/Car_Blue.png</file>
+        <file>Images/Car_Blue2.png</file>
+        <file>Images/Car_Green2.png</file>
+        <file>Images/Car_Orange.png</file>
+        <file>Images/Car_Yellow.png</file>
+        <file>Images/Truck.png</file>
+    </qresource>
+</RCC>
