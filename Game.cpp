@@ -1,9 +1,6 @@
 #include "Game.h"
 #include "ui_Game.h"
 
-#include <QTimer>
-#include <QDebug>
-
 Game::Game(QWidget *parent):
     QWidget(parent),
     ui(new Ui::Widget)
@@ -15,8 +12,6 @@ Game::Game(QWidget *parent):
     Scene *scene = new Scene(this);
     scene->setSceneRect(0,0,32*11,32*11);
     ui->graphicsView->setScene(scene);
-
-
 
     // add the item to the scene
     // background
@@ -43,7 +38,6 @@ Game::Game(QWidget *parent):
     scene->addItem(water3);
     scene->addItem(water4);
     scene->addItem(waterfall);
-
 
     // foreground
     FinishPoint *FPoint = new FinishPoint(96);

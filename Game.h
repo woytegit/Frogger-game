@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QGraphicsRectItem>
+#include <QTimer>
+#include <QDebug>
 
 #include "Scene.h"
 #include "Frog.h"
