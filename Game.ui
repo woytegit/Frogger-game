@@ -25,6 +25,9 @@
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QLabel" name="label">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="font">
       <font>
        <family>Comic Sans MS</family>
@@ -53,6 +56,9 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QLabel" name="label_2">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="font">
           <font>
            <family>Comic Sans MS</family>
@@ -69,6 +75,9 @@
        </item>
        <item>
         <widget class="QLCDNumber" name="lcdNumber">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="font">
           <font>
            <weight>50</weight>
@@ -89,6 +98,9 @@
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QLabel" name="label_3">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="font">
           <font>
            <family>Comic Sans MS</family>
@@ -105,6 +117,9 @@
        </item>
        <item>
         <widget class="QLCDNumber" name="lcdNumber_2">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="segmentStyle">
           <enum>QLCDNumber::Outline</enum>
          </property>
@@ -118,6 +133,13 @@
     <widget class="QGraphicsView" name="graphicsView">
      <property name="enabled">
       <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="startGameButton">
+     <property name="text">
+      <string>Start Game</string>
      </property>
     </widget>
    </item>

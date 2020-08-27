@@ -26,9 +26,13 @@ public:
 public slots:
     void update();
 
+private slots:
+    void on_startGameButton_clicked();
+
 private:
     Ui::Widget *ui;
     Scene *scene;
     Frog *frog;
+    QGraphicsRectItem *rect;
 };
 #endif // WIDGET_H

@@ -3,10 +3,12 @@
 #include <QApplication>
 #include <QGraphicsView>
 
+Game *game;
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Game game;
-    game.show();
+    game = new Game();
+    game->show();
     return a.exec();
 }
