@@ -30,9 +30,13 @@ private slots:
     void on_startGameButton_clicked();
 
 private:
+    void showGameOverGraphics();
     Ui::Widget *ui;
     Scene *scene;
     Frog *frog;
-    QGraphicsRectItem *rect;
+    QGraphicsPixmapItem *rect;
+    QGraphicsPixmapItem *gameOverPix;
+    bool tim;
+
 };
 #endif // WIDGET_H

@@ -15,5 +15,7 @@
         <file>Images/Car_Orange.png</file>
         <file>Images/Car_Yellow.png</file>
         <file>Images/Truck.png</file>
+        <file>Images/gameOverScreen.png</file>
+        <file>Images/startSceen.png</file>
     </qresource>
 </RCC>

@@ -139,7 +139,7 @@
    <item>
     <widget class="QPushButton" name="startGameButton">
      <property name="text">
-      <string>Start Game</string>
+      <string>Start</string>
      </property>
     </widget>
    </item>

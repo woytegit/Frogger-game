@@ -15,6 +15,7 @@ public:
     void Reset();
     int getScore();
     int getHighScore();
+    bool IsAlive;
 public slots:
     void IsFrogAlive();
 private:
@@ -22,8 +23,7 @@ private:
     int score = 0;
     int highscore = 0;
     int line=0;
-    bool frogOnLog;
-    bool IsAlive;
+    bool frogOnLog;    
     void IsCollisionWithCar();
     void IsFrogOnLog();
     void IsFrogInWater();

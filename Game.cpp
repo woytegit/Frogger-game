@@ -3,7 +3,7 @@
 
 Game::Game(QWidget *parent):
     QWidget(parent),
-    ui(new Ui::Widget)
+    ui(new Ui::Widget),tim(false)
 {
     ui->setupUi(this);
     ui->graphicsView->setFixedWidth(32*11+2);
@@ -15,27 +15,23 @@ Game::Game(QWidget *parent):
 
     scene->startGame();
 
-
-//    scene->addBackground();
-//    scene->addCars();
-//    scene->addLogs();
-//    scene->addFinishPoint();
-//    scene->addFrog();
-
     frog = new Frog;
     scene->addItem(frog);
     frog->setFlag(QGraphicsItem::ItemIsFocusable);
     frog->setFocus();
     frog->Reset();
 
-    rect = new QGraphicsRectItem();
-    rect->setRect(0,0,scene->width()-1,scene->height()-1);
-    rect->setBrush(QBrush(Qt::gray));
-    scene->addItem(rect);
+    startPix = new QGraphicsPixmapItem(QPixmap(":/Images/startSceen.png"));
+    scene->addItem(startPix);
+    startPix->show();
 
-//    QTimer * timer = new QTimer();
-//    connect(timer,SIGNAL(timeout()),this,SLOT(update()));
-//    timer->start(500);
+    QTimer * timer = new QTimer();
+    connect(timer,SIGNAL(timeout()),this,SLOT(update()));
+    timer->start(50);
+
+    gameOverPix = new QGraphicsPixmapItem(QPixmap(":/Images/gameOverScreen.png"));
+    scene->addItem(gameOverPix);
+    gameOverPix->hide();
 
 }
 
@@ -46,15 +42,26 @@ Game::~Game()
 
 void Game::update()
 {
-    ui->lcdNumber->display(frog->getHighScore());
-    ui->lcdNumber_2->display(frog->getScore());
+    if(frog->IsAlive==false and tim == false){
+        tim=true;
+        showGameOverGraphics();
+        qDebug()<<"Collision";
+    }
+    if(frog->IsAlive){
+        ui->lcdNumber->display(frog->getHighScore());
+        ui->lcdNumber_2->display(frog->getScore());
+    }
 }
-
 
 void Game::on_startGameButton_clicked()
 {
-    QTimer * timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),this,SLOT(update()));
-    timer->start(500);
-    rect->hide();
+    frog->Reset();
+    startPix->hide();
+    gameOverPix->hide();
+    tim=false;
+}
+
+void Game::showGameOverGraphics()
+{
+    gameOverPix->show();
 }

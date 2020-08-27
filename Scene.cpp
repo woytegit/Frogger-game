@@ -106,5 +106,22 @@ void Scene::startGame()
     Scene::addCars();
     Scene::addLogs();
     Scene::addFinishPoint();
-//    Scene::addFrog();
+    //    Scene::addFrog();
+}
+
+void Scene::showGameOverGraphics()
+{
+    gameOverPix = new QGraphicsPixmapItem(QPixmap(":/Images/finish_point.png"));
+    addItem(gameOverPix);
+    gameOverPix->setPos(0,0);
+
+}
+
+void Scene::hideGameOverGraphics()
+{
+    if(gameOverPix){
+        removeItem(gameOverPix);
+        delete gameOverPix;
+        gameOverPix = nullptr;
+    }
 }

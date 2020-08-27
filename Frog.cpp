@@ -87,9 +87,9 @@ void Frog::IsCollisionWithCar()
     foreach (QGraphicsItem * item, colliding_items){
         Vehicle * car = dynamic_cast<Vehicle*>(item);
         if(car){
-            qDebug()<<"Collision";
+            //qDebug()<<"Collision";
             IsAlive=false;
-            this->Reset();
+            //this->Reset();
             frogOnLog=false;      
         }
     }
@@ -121,7 +121,7 @@ void Frog::IsFrogInWater()
 {
     if(this->y()<5*grid && frogOnLog==false && this->y()>=0*grid){
         IsAlive=false;
-        this->Reset();
+        //this->Reset();
         qDebug()<<"Died In Water";
         qDebug()<<highscore;
     }
