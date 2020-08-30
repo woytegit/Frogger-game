@@ -49,18 +49,14 @@ void Frog::keyPressEvent(QKeyEvent *event){
         if (pos().y()<scene()->height()-grid-1) {// -1 bo zaba jest wysokosci 30
             setPos(x(),y()+step);
             line--;
-//            qDebug()<<"Line--";
         }
     }
     else if(event->key() == Qt::Key_Up){
         setRotation(0);
         if (pos().y()>1) {// 1 bo zaba jest wysokosci 30
             setPos(x(),y()-step);
-//            qDebug()<<"Line++";
-//            qDebug()<<line;
             if (line<0){
                 line++;
-//                qDebug()<<"Line++";
             }else{
                 score++;
             }
@@ -94,9 +90,7 @@ void Frog::IsCollisionWithCar()
     foreach (QGraphicsItem * item, colliding_items){
         Vehicle * car = dynamic_cast<Vehicle*>(item);
         if(car){
-            //qDebug()<<"Collision";
             IsAlive=false;
-            //this->Reset();
             frogOnLog=false;      
         }
     }
@@ -109,7 +103,6 @@ void Frog::IsFrogOnLog()
         OnWater * log = dynamic_cast<OnWater*>(item);
         if(log){
             frogOnLog=true;
-//            qDebug()<<"Zaczepiony";
             if(this->x()>=0&&this->x()<=scene()->width()-grid){
                 this->setX(this->x()+log->speed_value());
                 if(this->x()<0){
@@ -128,9 +121,6 @@ void Frog::IsFrogInWater()
 {
     if(this->y()<5*grid && frogOnLog==false && this->y()>=0*grid){
         IsAlive=false;
-        //this->Reset();
-        //qDebug()<<"Died In Water";
-        //qDebug()<<highscore;
     }
 }
 
@@ -140,7 +130,6 @@ void Frog::IsFrogOnFinishPoint()
     foreach (QGraphicsItem * item, colliding_items){
         FinishPoint * point = dynamic_cast<FinishPoint*>(item);
         if(point){
-            //qDebug()<<"Finished";
             score+=5;
             this->Reset();
         }
