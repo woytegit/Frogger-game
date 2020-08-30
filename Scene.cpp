@@ -82,24 +82,18 @@ void Scene::addLogs()
 {
     QTime time = QTime::currentTime();
     qsrand((uint)time.msec());
-    int znak;
 
     QVector<int> speed;
     for(int i=0; i<3; i++){
-        if(((rand() % (2)))==0){
-            znak=-1;
-        }else{
-            znak=1;
-        }
-        speed.append(znak*2*((rand() % (4)+2)));
+        speed.append(2*((rand() % (4)+2)));
     }
 
     QList<OnWater*> onWaterList;
     onWaterList.push_back(new OnWater(4,speed[0],64,1));            /*Log*/
     onWaterList.push_back(new OnWater(4,speed[0],64*3,1));          /*Log*/
     onWaterList.push_back(new OnWater(4,speed[0],64*7,2));          /*Log*/
-    onWaterList.push_back(new OnWater(3,speed[1],64,2));            /*Log*/
-    onWaterList.push_back(new OnWater(3,speed[1],64*4.5,1));        /*Log*/
+    onWaterList.push_back(new OnWater(3,-speed[1],64,2));           /*Log*/
+    onWaterList.push_back(new OnWater(3,-speed[1],64*4.5,1));       /*Log*/
     onWaterList.push_back(new OnWater(1,speed[2],0,1));             /*Log*/
     onWaterList.push_back(new OnWater(1,speed[2],64*2,1));          /*Log*/
     onWaterList.push_back(new OnWater(1,speed[2],64*6,2));          /*Log*/
@@ -131,7 +125,6 @@ void Scene::startGame()
     Scene::addCars();
     Scene::addLogs();
     Scene::addFinishPoint();
-    //    Scene::addFrog();
 }
 
 void Scene::showGameOverGraphics()
