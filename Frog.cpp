@@ -9,6 +9,15 @@
 #include <QList>
 #include <QDebug>
 
+template <class any_data_type>
+any_data_type NewHighscore(any_data_type Var1, any_data_type Var2)
+{
+    if(Var1<Var2){
+        Var1=Var2;
+    }
+    return Var1;
+}
+
 Frog::Frog(int w)
 {
     grid=w;
@@ -75,9 +84,7 @@ void Frog::IsFrogAlive()
     IsFrogOnFinishPoint();
     IsFrogInWater();
 
-    if(highscore<score){
-        highscore=score;
-    }
+    highscore = NewHighscore(highscore,score);
 
 }
 
