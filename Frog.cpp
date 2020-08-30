@@ -122,8 +122,8 @@ void Frog::IsFrogInWater()
     if(this->y()<5*grid && frogOnLog==false && this->y()>=0*grid){
         IsAlive=false;
         //this->Reset();
-        qDebug()<<"Died In Water";
-        qDebug()<<highscore;
+        //qDebug()<<"Died In Water";
+        //qDebug()<<highscore;
     }
 }
 
@@ -133,7 +133,7 @@ void Frog::IsFrogOnFinishPoint()
     foreach (QGraphicsItem * item, colliding_items){
         FinishPoint * point = dynamic_cast<FinishPoint*>(item);
         if(point){
-            qDebug()<<"Finished";
+            //qDebug()<<"Finished";
             score+=5;
             this->Reset();
         }
@@ -148,6 +148,11 @@ int Frog::getScore()
 int Frog::getHighScore()
 {
     return highscore;
+}
+
+void Frog::resetHighscore()
+{
+    highscore=0;
 }
 
 

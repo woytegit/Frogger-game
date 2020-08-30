@@ -17,10 +17,14 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE
 
+/** Klasa odpowiedzialna za wyswietlanie gry */
 class Game : public QWidget
 {
     Q_OBJECT
 public:
+    /** Constructor of Game class
+    * @param *parent
+    * */
     Game(QWidget *parent = nullptr);
     ~Game();
 public slots:
@@ -31,12 +35,17 @@ private slots:
 
 private:
     void showGameOverGraphics();
+    /// Wskaznik do Ui widget
     Ui::Widget *ui;
+    /// Wskaznik do sceny
     Scene *scene;
+    /// Wskaznik do zaby/bohatera
     Frog *frog;
-    QGraphicsPixmapItem *rect;
+    /// Wskaznik do ekranu powitalnego
+    QGraphicsPixmapItem *startPix;
+    /// Wskaznik do ekranu porazki
     QGraphicsPixmapItem *gameOverPix;
-    bool tim;
+    int tim;
 
 };
 #endif // WIDGET_H

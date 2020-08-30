@@ -96,7 +96,7 @@ void Scene::addLogs()
 
 void Scene::addFinishPoint()
 {
-    FinishPoint *FPoint = new FinishPoint(96);
+    FinishPoint *FPoint = new FinishPoint(128);
     addItem(FPoint);
 }
 

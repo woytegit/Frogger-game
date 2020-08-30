@@ -3,7 +3,7 @@
 
 Game::Game(QWidget *parent):
     QWidget(parent),
-    ui(new Ui::Widget),tim(false)
+    ui(new Ui::Widget),tim(0)
 {
     ui->setupUi(this);
     ui->graphicsView->setFixedWidth(32*11+2);
@@ -25,10 +25,6 @@ Game::Game(QWidget *parent):
     scene->addItem(startPix);
     startPix->show();
 
-    QTimer * timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),this,SLOT(update()));
-    timer->start(50);
-
     gameOverPix = new QGraphicsPixmapItem(QPixmap(":/Images/gameOverScreen.png"));
     scene->addItem(gameOverPix);
     gameOverPix->hide();
@@ -42,10 +38,10 @@ Game::~Game()
 
 void Game::update()
 {
-    if(frog->IsAlive==false and tim == false){
-        tim=true;
+    if(frog->IsAlive==false and tim == 1){
+        tim=2;
         showGameOverGraphics();
-        qDebug()<<"Collision";
+//        qDebug()<<"Collision";
     }
     if(frog->IsAlive){
         ui->lcdNumber->display(frog->getHighScore());
@@ -58,7 +54,15 @@ void Game::on_startGameButton_clicked()
     frog->Reset();
     startPix->hide();
     gameOverPix->hide();
-    tim=false;
+    if(tim==0)
+    {
+        QTimer * timer = new QTimer();
+        connect(timer,SIGNAL(timeout()),this,SLOT(update()));
+        timer->start(50);
+        frog->resetHighscore();
+    }
+
+    tim=1;
 }
 
 void Game::showGameOverGraphics()

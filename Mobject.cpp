@@ -13,11 +13,6 @@ MObject::MObject(int line, float speed, int offset, int h)
     timer->start(50);
 }
 
-void MObject::start()
-{
-
-}
-
 void MObject::move(){
     // move object
     setX(x()+S);
