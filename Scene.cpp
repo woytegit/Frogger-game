@@ -16,6 +16,29 @@ void Scene::addFrog()
 
 void Scene::addBackground()
 {
+    QList<BackgroundLines*> BGList;
+    for (int i=0; i<=10; i++){
+        if(i==5 or i==10){                              /*Linia 5 i 10*/
+            BGList.push_back(new BackgroundLines(i,0)); /*grass*/
+        }else if(i>=6 and i<=9){                        /*Linia 6-9*/
+            BGList.push_back(new BackgroundLines(i,1)); /*road*/
+        }else if(i>=1 and i<=4){                        /*Linia 1-4*/
+            BGList.push_back(new BackgroundLines(i,2)); /*water*/
+        }else{                                          /*Linia 0*/
+            BGList.push_back(new BackgroundLines(i,3)); /*waterfall*/
+        }
+    }
+
+    for (QList<BackgroundLines*>::const_iterator iter = BGList.begin(),
+         end = BGList.end();
+         iter != end;
+         ++iter)
+    {
+        addItem(*iter);
+    }
+}
+
+/*** Old version
     BackgroundLines *grass1 = new BackgroundLines(10,0);
     BackgroundLines *road1 = new BackgroundLines(9,1);
     BackgroundLines *road2 = new BackgroundLines(8,1);
@@ -39,32 +62,57 @@ void Scene::addBackground()
     addItem(water3);
     addItem(water4);
     addItem(waterfall);
-}
+    ***/
 
 void Scene::addCars()
 {
-    Vehicle *car1 = new Vehicle(9,-11,0,6);
-    Vehicle *car2 = new Vehicle(9,-11,64*4,1);
-    Vehicle *car3 = new Vehicle(8,13,0,4);
-    Vehicle *car4 = new Vehicle(8,13,64*3,1);
-    Vehicle *car5 = new Vehicle(7,-8,0,5);
-    Vehicle *car6 = new Vehicle(7,-8,192,2);
-    Vehicle *car7 = new Vehicle(7,-8,500,6);
-    Vehicle *car8 = new Vehicle(6,6,-64,6);
-    Vehicle *car9 = new Vehicle(6,6,180,2);
-    Vehicle *car10 = new Vehicle(6,6,404,3);
+    QList<Vehicle*> carList;
+    carList.push_back(new Vehicle(9,-11,0,6));
+    carList.push_back(new Vehicle(9,-11,64*4,1));
+    carList.push_back(new Vehicle(8,13,0,4));
+    carList.push_back(new Vehicle(8,13,64*3,1));
+    carList.push_back(new Vehicle(7,-8,0,5));
+    carList.push_back(new Vehicle(7,-8,192,2));
+    carList.push_back(new Vehicle(7,-8,500,6));
+    carList.push_back(new Vehicle(6,6,-64,6));
+    carList.push_back(new Vehicle(6,6,-64,6));
+    carList.push_back(new Vehicle(6,6,180,2));
+    carList.push_back(new Vehicle(6,6,404,3));
 
-    addItem(car1);
-    addItem(car2);
-    addItem(car3);
-    addItem(car4);
-    addItem(car5);
-    addItem(car6);
-    addItem(car7);
-    addItem(car8);
-    addItem(car9);
-    addItem(car10);
+    for (QList<Vehicle*>::const_iterator iter = carList.begin(),
+         end = carList.end();
+         iter != end;
+         ++iter)
+    {
+        addItem(*iter);
+    }
 }
+
+/*** Old version
+//    Vehicle *car1 = new Vehicle(9,-11,0,6);
+//    Vehicle *car2 = new Vehicle(9,-11,64*4,1);
+//    Vehicle *car3 = new Vehicle(8,13,0,4);
+//    Vehicle *car4 = new Vehicle(8,13,64*3,1);
+//    Vehicle *car5 = new Vehicle(7,-8,0,5);
+//    Vehicle *car6 = new Vehicle(7,-8,192,2);
+//    Vehicle *car7 = new Vehicle(7,-8,500,6);
+//    Vehicle *car8 = new Vehicle(6,6,-64,6);
+//    Vehicle *car9 = new Vehicle(6,6,180,2);
+//    Vehicle *car10 = new Vehicle(6,6,404,3);
+
+//    addItem(car1);
+//    addItem(car2);
+//    addItem(car3);
+//    addItem(car4);
+//    addItem(car5);
+//    addItem(car6);
+//    addItem(car7);
+//    addItem(car8);
+//    addItem(car9);
+//    addItem(car10);
+
+***/
+
 
 void Scene::addLogs()
 {
