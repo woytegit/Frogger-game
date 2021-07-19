@@ -3,7 +3,7 @@
 #include "OnWater.h"
 #include "FinishPoint.h"
 
-#include "ui_widget.h"
+//#include "ui_widget.h"
 
 #include <QTimer>
 #include <QList>
@@ -48,18 +48,32 @@ void Frog::keyPressEvent(QKeyEvent *event){
         setRotation(180);
         if (pos().y()<scene()->height()-grid-1) {// -1 bo zaba jest wysokosci 30
             setPos(x(),y()+step);
-            line--;
+            if (directionChanged==true){
+                if (line<0){
+                    line++;
+                }else{
+                    score++;
+                }
+            }else{
+                line--;
+            }
+
         }
     }
     else if(event->key() == Qt::Key_Up){
         setRotation(0);
         if (pos().y()>1) {// 1 bo zaba jest wysokosci 30
             setPos(x(),y()-step);
-            if (line<0){
-                line++;
+            if (directionChanged==false){
+                if (line<0){
+                    line++;
+                }else{
+                    score++;
+                }
             }else{
-                score++;
+                line--;
             }
+
         }
     }
 }
@@ -70,6 +84,7 @@ void Frog::Reset()
     if(IsAlive==false){
         score=0;
         IsAlive=true;
+        directionChanged=false;
     }
 }
 
@@ -79,6 +94,7 @@ void Frog::IsFrogAlive()
     IsFrogOnLog();
     IsFrogOnFinishPoint();
     IsFrogInWater();
+    IsFrogOnStartLine();
 
     highscore = NewHighscore(highscore,score);
 
@@ -130,9 +146,21 @@ void Frog::IsFrogOnFinishPoint()
     foreach (QGraphicsItem * item, colliding_items){
         FinishPoint * point = dynamic_cast<FinishPoint*>(item);
         if(point){
-            score+=5;
-            this->Reset();
+            frogOnLog=true;
+            if(directionChanged==false){
+                score+=5;
+            }
+            directionChanged=true;
+//            this->Reset();
         }
+    }
+}
+
+void Frog::IsFrogOnStartLine()
+{
+    if(this->y()>10*grid && directionChanged==true){
+        directionChanged=false;
+        score+=5;
     }
 }
 

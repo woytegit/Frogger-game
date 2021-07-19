@@ -54,6 +54,9 @@ private:
     void IsFrogInWater();
     /// Sprawdza czy zaba osiagnela cel
     void IsFrogOnFinishPoint();
+    bool directionChanged=false;
+    /// Sprawdza czy zaba znajduje sie na lini początkowej
+    void IsFrogOnStartLine();
 
 };
 
